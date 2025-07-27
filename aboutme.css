@@ -1,0 +1,592 @@
+/* Reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    line-height: 1.6;
+    background-color: white;
+    min-height: 100vh;
+}
+
+/* Navigation Bar Styles */
+header {
+    padding: 20px;
+    background-color: white;
+    animation: slideDown 0.8s ease-out;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 15px 30px;
+    border-radius: 50px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    max-width: 1200px;
+    margin: 0 auto;
+    animation: fadeInScale 1s ease-out 0.2s both;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.logo h1 {
+    font-size: 28px;
+    font-weight: bold;
+    color: #333;
+    text-decoration: none;
+    margin: 0;
+    font-family: 'Lato', sans-serif;
+    animation: slideInLeft 0.8s ease-out 0.4s both;
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.nav-links {
+    display: flex;
+    gap: 30px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.nav-links a {
+    text-decoration: none;
+    color: #555;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.nav-links a::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #435586 0%, #d7e6dd 100%);
+    transition: left 0.3s ease;
+    z-index: -1;
+    border-radius: 25px;
+}
+
+.nav-links a:hover::before {
+    left: 0;
+}
+
+.nav-links a:hover {
+    color: white;
+    transform: translateY(-1px);
+}
+
+.contact-btn a {
+    text-decoration: none;
+    color: white;
+    background: linear-gradient(135deg, #435586 0%, #d7e6dd 100%);
+    padding: 12px 24px;
+    border-radius: 25px;
+    font-weight: 500;
+    font-size: 16px;
+    transition: all 0.3s ease;
+    font-family: 'Lato', sans-serif;
+    box-shadow: 0 4px 15px rgba(67, 85, 134, 0.4);
+    animation: slideInRight 0.8s ease-out 0.8s both;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+.contact-btn a:hover {
+    background: linear-gradient(135deg, #2a4696 0%, #b8d4c8 100%);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(67, 85, 134, 0.6);
+}
+
+main {
+    max-width: 1200px;
+    margin: 40px auto;
+    padding: 0 20px;
+}
+
+/* Responsive Design for Navigation */
+@media (max-width: 1200px) {
+    .navbar {
+        max-width: 95%;
+        padding: 12px 20px;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Header & Navigation */
+    header {
+        padding: 15px;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 25px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-links a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+    
+    .contact-btn a {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header & Navigation */
+    .navbar {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+    
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    .contact-btn a {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+}
+
+/* About Me Content Styles */
+.section {
+    margin-top: 2rem;
+    margin-bottom: 10rem;
+}
+
+.title {
+    font-size: 4rem;
+    color: #353535;
+    font-weight: 500;
+    text-align: center;
+    margin-bottom: 3rem;
+}
+
+.section-subtitle {
+    font-size: 1.8rem;
+    color: #353535;
+    font-weight: 400;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-family: 'Lato', sans-serif;
+}
+
+/* Academic Section Styles */
+.academic-section {
+    margin-bottom: 4rem;
+}
+
+.academic-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.degree-card {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 20px;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.degree-card:hover {
+    background: linear-gradient(135deg, rgba(67, 85, 134, 0.1) 0%, rgba(215, 230, 221, 0.1) 100%);
+    border-color: rgba(67, 85, 134, 0.3);
+    box-shadow: 0 8px 30px rgba(67, 85, 134, 0.15);
+    transform: translateY(-5px);
+}
+
+.degree-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #353535;
+    margin-bottom: 1rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.degree-info {
+    font-size: 1.2rem;
+    font-weight: 500;
+    color: #435586;
+    margin-bottom: 0.5rem;
+    font-family: 'Lato', sans-serif;
+}
+
+.degree-school {
+    font-size: 1rem;
+    color: #666;
+    margin-bottom: 0.5rem;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+.degree-year {
+    font-size: 0.9rem;
+    color: #999;
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+}
+
+/* Divider Section Styles */
+.divider-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 4rem 0;
+    padding: 0 2rem;
+}
+
+.divider-line {
+    width: 100px;
+    height: 2px;
+    background: linear-gradient(135deg, #435586 0%, #d7e6dd 100%);
+    border-radius: 1px;
+    opacity: 0.6;
+}
+
+/* Skills Section Styles */
+.skills-section {
+    margin-bottom: 4rem;
+}
+
+.skill-category {
+    margin-bottom: 3rem;
+}
+
+.skill-category:last-child {
+    margin-bottom: 0;
+}
+
+.category-title {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: #435586;
+    margin-bottom: 1.5rem;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    position: relative;
+    padding-bottom: 0.5rem;
+}
+
+.category-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60px;
+    height: 2px;
+    background: linear-gradient(135deg, #435586 0%, #d7e6dd 100%);
+    border-radius: 1px;
+}
+
+.skills-container {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+}
+
+.skill-item {
+    background-color: white;
+    border: 1px solid #f0f0f0;
+    border-radius: 15px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    transition: all 0.3s ease;
+}
+
+.skill-item:hover {
+    background: linear-gradient(135deg, rgba(67, 85, 134, 0.05) 0%, rgba(215, 230, 221, 0.05) 100%);
+    border-color: rgba(67, 85, 134, 0.2);
+    box-shadow: 0 4px 15px rgba(67, 85, 134, 0.1);
+    transform: translateY(-2px);
+}
+
+.skill-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+
+.skill-name {
+    font-size: 1.1rem;
+    font-weight: 500;
+    color: #353535;
+    font-family: 'Lato', sans-serif;
+}
+
+.skill-level {
+    font-size: 0.9rem;
+    font-weight: 400;
+    color: #435586;
+    background: linear-gradient(135deg, rgba(67, 85, 134, 0.1) 0%, rgba(215, 230, 221, 0.1) 100%);
+    padding: 0.25rem 0.75rem;
+    border-radius: 15px;
+    font-family: 'Lato', sans-serif;
+}
+
+.progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #f0f0f0;
+    border-radius: 4px;
+    overflow: hidden;
+    position: relative;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(135deg, #435586 0%, #d7e6dd 100%);
+    border-radius: 4px;
+    transition: width 1.5s ease-in-out;
+    position: relative;
+}
+
+.progress-fill::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(100%);
+    }
+}
+
+/* Fade In Animation Classes */
+.fade-in {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s ease;
+}
+
+.fade-in.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: all 0.8s ease;
+}
+
+.fade-in-up.animate {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* Stagger animations for multiple elements */
+.stagger-1 { transition-delay: 0.1s; }
+.stagger-2 { transition-delay: 0.2s; }
+.stagger-3 { transition-delay: 0.3s; }
+
+/* Responsive Design for About Me Content */
+@media (max-width: 768px) {
+    .title {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.5rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .academic-container {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+        max-width: 100%;
+    }
+    
+    .degree-card {
+        padding: 1.5rem;
+    }
+    
+    .degree-title {
+        font-size: 1.3rem;
+    }
+    
+    .degree-info {
+        font-size: 1.1rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 2rem;
+    }
+    
+    .category-title {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .skills-container {
+        max-width: 100%;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+    
+    .skill-item {
+        padding: 1.25rem;
+    }
+    
+    .skill-name {
+        font-size: 1rem;
+    }
+    
+    .skill-level {
+        font-size: 0.8rem;
+        padding: 0.2rem 0.6rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .title {
+        font-size: 1.75rem;
+        margin-bottom: 1.5rem;
+    }
+    
+    .section-subtitle {
+        font-size: 1.3rem;
+        margin-bottom: 1rem;
+    }
+    
+    .degree-card {
+        padding: 1.25rem;
+    }
+    
+    .degree-title {
+        font-size: 1.2rem;
+    }
+    
+    .degree-info {
+        font-size: 1rem;
+    }
+    
+    .skill-category {
+        margin-bottom: 1.5rem;
+    }
+    
+    .category-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    .skill-item {
+        padding: 1rem;
+    }
+    
+    .skill-name {
+        font-size: 0.95rem;
+    }
+    
+    .skill-level {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.5rem;
+    }
+    
+    .progress-bar {
+        height: 6px;
+    }
+}
