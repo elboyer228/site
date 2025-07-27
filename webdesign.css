@@ -16,6 +16,7 @@ body {
 header {
     padding: 20px;
     background-color: white;
+    animation: slideDown 0.8s ease-out;
 }
 
 .navbar {
@@ -28,22 +29,70 @@ header {
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
     max-width: 1200px;
     margin: 0 auto;
+    animation: fadeInScale 1s ease-out 0.2s both;
+}
+
+@keyframes slideDown {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 
-.logo h1 {
+.logo a {
     font-size: 28px;
     font-weight: bold;
     color: #333;
     text-decoration: none;
     margin: 0;
     font-family: 'Lato', sans-serif;
+    animation: slideInLeft 0.8s ease-out 0.4s both;
+    
+}
+
+@keyframes slideInLeft {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 
 .nav-links {
     display: flex;
     gap: 30px;
+    animation: fadeInUp 0.8s ease-out 0.6s both;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .nav-links a {
@@ -93,6 +142,18 @@ header {
     transition: all 0.3s ease;
     font-family: 'Lato', sans-serif;
     box-shadow: 0 4px 15px rgba(67, 85, 134, 0.4);
+    animation: slideInRight 0.8s ease-out 0.8s both;
+}
+
+@keyframes slideInRight {
+    from {
+        opacity: 0;
+        transform: translateX(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
 }
 
 .contact-btn a:hover {
@@ -106,6 +167,7 @@ main {
     max-width: 1200px;
     margin: 40px auto;
     padding: 0 20px;
+
 }
 
 
@@ -783,18 +845,381 @@ main {
     box-shadow: 0 6px 20px rgba(67, 85, 134, 0.4);
 }
 
-/* Responsive design for contact section */
+/* Responsive Design */
+@media (max-width: 1200px) {
+    main {
+        max-width: 95%;
+        padding: 0 15px;
+    }
+    
+    .navbar {
+        max-width: 95%;
+        padding: 12px 20px;
+    }
+}
+
 @media (max-width: 768px) {
+    /* Header & Navigation */
+    header {
+        padding: 15px;
+    }
+    
+    .navbar {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+        border-radius: 25px;
+    }
+    
+    .nav-links {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+    
+    .nav-links a {
+        font-size: 14px;
+        padding: 6px 12px;
+    }
+    
+    .logo h1 {
+        font-size: 24px;
+    }
+    
+    .contact-btn a {
+        font-size: 14px;
+        padding: 10px 20px;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        padding: 40px 20px;
+        margin: 10px 0;
+    }
+    
+    .main-title {
+        font-size: 2.5rem;
+        margin-bottom: 30px;
+    }
+    
+    .description {
+        font-size: 1rem;
+        text-align: justify;
+    }
+    
+    .discover-btn {
+        font-size: 1.1rem;
+        padding: 10px 20px;
+    }
+    
+    /* Website Section */
+    .website {
+        padding: 30px 20px;
+        margin-top: 2rem;
+    }
+    
+    .website-title {
+        font-size: 2.2rem;
+    }
+    
+    .website-description {
+        font-size: 1rem;
+    }
+    
+    .website-cards {
+        margin-top: 2rem;
+    }
+    
+    .website-plan {
+        flex-direction: column;
+        gap: 20px;
+        padding: 25px;
+    }
+    
+    .plan-content {
+        align-items: flex-start;
+    }
+    
+    .price {
+        text-align: left;
+        font-size: 2rem;
+        align-self: flex-start;
+    }
+    
+    /* Portfolio Section */
+    .portfolio-section {
+        padding: 30px 20px;
+    }
+    
+    .portfolio-title {
+        font-size: 2.2rem;
+    }
+    
+    .portfolio-description {
+        font-size: 1rem;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    
+    .portfolio-image {
+        height: 250px;
+    }
+    
+    /* Q&A Section */
+    .qa-section {
+        padding: 30px 20px;
+    }
+    
+    .qa-title {
+        font-size: 2.2rem;
+    }
+    
+    .qa-description {
+        font-size: 1rem;
+    }
+    
+    .qa-list {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+    
+    .qa-item {
+        padding: 20px;
+    }
+    
+    .qa-question h3 {
+        font-size: 1.3rem;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        padding: 30px 20px;
+    }
+    
+    .contact-title {
+        font-size: 2.2rem;
+    }
+    
+    .contact-description {
+        font-size: 1rem;
+    }
+    
     .contact-content {
         grid-template-columns: 1fr;
         gap: 40px;
     }
     
+    .contact-info h3,
+    .contact-form h3 {
+        font-size: 1.5rem;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Header & Navigation */
+    .navbar {
+        padding: 15px;
+        gap: 15px;
+    }
+    
+    .nav-links {
+        gap: 10px;
+    }
+    
+    .nav-links a {
+        font-size: 13px;
+        padding: 5px 10px;
+    }
+    
+    .logo h1 {
+        font-size: 20px;
+    }
+    
+    .contact-btn a {
+        font-size: 13px;
+        padding: 8px 16px;
+    }
+    
+    /* Hero Section */
+    .hero-section {
+        padding: 30px 15px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+        margin-bottom: 25px;
+    }
+    
+    .description {
+        font-size: 0.9rem;
+        text-align: justify;
+    }
+    
+    .discover-btn {
+        font-size: 1rem;
+        padding: 8px 16px;
+    }
+    
+    /* Website Section */
+    .website {
+        padding: 20px 15px;
+    }
+    
+    .website-title {
+        font-size: 1.8rem;
+    }
+    
+    .website-description {
+        font-size: 0.9rem;
+    }
+    
+    .website-plan {
+        padding: 20px;
+    }
+    
+    .website-card-title {
+        font-size: 1.5rem;
+    }
+    
+    .website-card-description {
+        font-size: 0.9rem;
+    }
+    
+    .website-card-features li {
+        font-size: 0.9rem;
+    }
+    
+    .price {
+        font-size: 1.8rem;
+    }
+    
+    /* Portfolio Section */
+    .portfolio-section {
+        padding: 20px 15px;
+    }
+    
+    .portfolio-title {
+        font-size: 1.8rem;
+    }
+    
+    .portfolio-description {
+        font-size: 0.9rem;
+    }
+    
+    .portfolio-image {
+        height: 200px;
+    }
+    
+    .portfolio-content {
+        padding: 20px;
+    }
+    
+    .portfolio-content h3 {
+        font-size: 1.2rem;
+    }
+    
+    .portfolio-content p {
+        font-size: 0.9rem;
+    }
+    
+    /* Q&A Section */
+    .qa-section {
+        padding: 20px 15px;
+    }
+    
+    .qa-title {
+        font-size: 1.8rem;
+    }
+    
+    .qa-description {
+        font-size: 0.9rem;
+    }
+    
+    .qa-item {
+        padding: 15px;
+    }
+    
+    .qa-question h3 {
+        font-size: 1.1rem;
+    }
+    
+    .qa-answer p {
+        font-size: 0.9rem;
+    }
+    
+    /* Contact Section */
+    .contact-section {
+        padding: 20px 15px;
+    }
+    
     .contact-title {
-        font-size: 2.5rem;
+        font-size: 1.8rem;
     }
     
     .contact-description {
-        font-size: 1.1rem;
+        font-size: 0.9rem;
+    }
+    
+    .contact-info h3,
+    .contact-form h3 {
+        font-size: 1.3rem;
+    }
+    
+    .contact-info p {
+        font-size: 0.9rem;
+    }
+    
+    .contact-item h4 {
+        font-size: 1rem;
+    }
+    
+    .contact-item p {
+        font-size: 0.9rem;
+    }
+    
+    .form-group label {
+        font-size: 0.8rem;
+    }
+    
+    .form-group input,
+    .form-group textarea {
+        font-size: 0.9rem;
+        padding: 10px 12px;
+    }
+    
+    .submit-btn {
+        font-size: 0.9rem;
+        padding: 12px 24px;
+    }
+}
+
+/* Landscape orientation adjustments for mobile */
+@media (max-width: 768px) and (orientation: landscape) {
+    .hero-section {
+        padding: 30px 20px;
+    }
+    
+    .main-title {
+        font-size: 2rem;
+    }
+    
+    .website-plan {
+        flex-direction: row;
+        gap: 30px;
+    }
+    
+    .portfolio-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+/* High DPI displays */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .portfolio-img {
+        image-rendering: -webkit-optimize-contrast;
+        image-rendering: crisp-edges;
     }
 }
