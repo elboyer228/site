@@ -101,11 +101,44 @@ header {
     font-weight: 500;
     font-size: 16px;
     transition: all 0.3s ease;
+    position: relative;
     padding: 8px 16px;
     border-radius: 25px;
-    font-family: 'Lato', sans-serif;
-    position: relative;
     overflow: hidden;
+}
+
+.right-section {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    animation: slideInRight 0.8s ease-out 0.7s both;
+}
+
+.language-switcher {
+    animation: fadeInUp 0.8s ease-out 0.5s both;
+}
+
+.lang-btn {
+    text-decoration: none;
+    color: #555;
+    font-weight: 600;
+    font-size: 14px;
+    padding: 8px 16px;
+    border: 2px solid #e0e0e0;
+    border-radius: 25px;
+    transition: all 0.3s ease;
+    background-color: white;
+    display: inline-block;
+    min-width: 50px;
+    text-align: center;
+}
+
+.lang-btn:hover {
+    border-color: #333;
+    color: #333;
+    background-color: #f8f8f8;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
 }
 
 .nav-links a::before {
@@ -859,37 +892,42 @@ main {
 }
 
 @media (max-width: 768px) {
-    /* Header & Navigation */
     header {
         padding: 15px;
     }
-    
+
     .navbar {
         flex-direction: column;
-        gap: 20px;
-        padding: 20px;
-        padding-bottom: 25px;
-        border-radius: 25px;
-    }
-    
-    .nav-links {
         gap: 15px;
-        flex-wrap: wrap;
-        justify-content: center;
+        padding: 20px;
+        border-radius: 30px;
     }
-    
+
+    .nav-links {
+        gap: 20px;
+    }
+
     .nav-links a {
         font-size: 14px;
-        padding: 6px 12px;
     }
-    
+
     .logo h1 {
         font-size: 24px;
     }
-    
+
+    .right-section {
+        justify-content: center;
+        gap: 12px;
+    }
+
     .contact-btn a {
         font-size: 14px;
         padding: 10px 20px;
+    }
+
+    .lang-btn {
+        padding: 6px 14px;
+        font-size: 13px;
     }
     
     /* Hero Section */
@@ -1020,29 +1058,36 @@ main {
 }
 
 @media (max-width: 480px) {
-    /* Header & Navigation */
     .navbar {
         padding: 15px;
-        padding-bottom: 20px;
+        gap: 12px;
+    }
+
+    .nav-links {
         gap: 15px;
     }
-    
-    .nav-links {
-        gap: 10px;
-    }
-    
+
     .nav-links a {
         font-size: 13px;
-        padding: 5px 10px;
     }
-    
+
     .logo h1 {
-        font-size: 20px;
+        font-size: 22px;
     }
-    
+
+    .right-section {
+        gap: 10px;
+    }
+
     .contact-btn a {
         font-size: 13px;
         padding: 8px 16px;
+    }
+
+    .lang-btn {
+        padding: 5px 12px;
+        font-size: 12px;
+        min-width: 45px;
     }
     
     /* Hero Section */
