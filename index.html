@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <section class="hero">
+      <div class="hero-inner">
+        <h1 class="hero-title">Hi, I'm Élise</h1>
+        <p class="hero-sub">Welcome to my <em>portfolio</em></p>
+        <div class="hero-visual">
+          <img src="logo.png" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <div class="layout">
+      <aside class="sidebar">
+        <nav class="sections" aria-label="Sections">
+          <ul>
+            <li class="nav-item active" data-target="about" data-color="#B8D587"><a href="#about">About me</a></li>
+            <li class="nav-item" data-target="interests" data-color="#CFBACC"><a href="#interests">Interests</a></li>
+            <li class="nav-item" data-target="projects" data-color="#C5CD90"><a href="#projects">Projects</a></li>
+            <li class="nav-item" data-target="contact" data-color="#C0DAE6"><a href="#contact">Get in touch</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section id="about" class="section" style="--section-accent:#B8D587">
+          <div class="section-header">
+            <div class="badge">01</div>
+            <h2>About me</h2>
+          </div>
+          <div class="section-body reveal section-body--center">
+            <p>I'm a Master's student in Data Science at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: black; text-decoration: none; font-style: italic;">Federal Institute of Technology in Lausanne (EPFL)</a>.</p>
+            <p>Yes, I <i>genuinely</i> do enjoy cleaning datasets and building data pipelines to extract data insights that help people make <i>better</i> decisions.</p>
+            <p>I'm looking for a 6-month internship starting in September 2026 at a company that values creativity and innovation, where I can grow both <i>professionally</i> and <i>personally</i>.</p>
+            <a href="about.html" class="btn btn-outline">Learn more about my background and skills</a>
+          </div>
+        </section>
+
+        <section id="interests" class="section" style="--section-accent:#CFBACC">
+          <div class="section-header">
+            <div class="badge">02</div>
+            <h2>Interests</h2>
+          </div>
+          <div class="section-body-interests reveal section-body--plain">
+            <div class="cards">
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20v-6m4 6V4m4 16v-9m4 9v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="card-title">Data Analysis</h3>
+                <p class="card-desc">Extracting high‑value insights from raw data through rigorous querying, statistics, and exploration to answer real questions and guide decisions.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="8" ry="3" stroke="currentColor" stroke-width="2"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5" stroke="currentColor" stroke-width="2"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" stroke="currentColor" stroke-width="2"/></svg>
+                </div>
+                <h3 class="card-title">Data Engineering</h3>
+                <p class="card-desc">Building robust data pipelines and infrastructure to enable scalable data processing and analytics.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="17" r="2.5" stroke="currentColor" stroke-width="2"/><path d="M9 7h9M7 9v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                </div>
+                <h3 class="card-title">UX/UI Design</h3>
+                <p class="card-desc">Designing intuitive and engaging experiences that bridge the gap between functionality and aesthetics.</p>
+              </article>
+
+              <article class="card">
+                <div class="card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M8 8L4 12l4 4M16 8l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </div>
+                <h3 class="card-title">Web Development</h3>
+                <p class="card-desc">Building modern, responsive applications that combine technical excellence with creative design.</p>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="projects" class="section" style="--section-accent:#C5CD90">
+          <div class="section-header">
+            <div class="badge">03</div>
+            <h2>Projects</h2>
+          </div>
+          <div class="section-body reveal section-body--plain">
+            <div class="projects-container">
+              <div class="projects-filter" role="tablist" aria-label="Project categories">
+                <button class="filter-btn active" data-filter="all" role="tab" aria-selected="true">All</button>
+                <button class="filter-btn" data-filter="ux-ui" role="tab">UX/UI</button>
+                <button class="filter-btn" data-filter="ml" role="tab">Machine Learning</button>
+                <button class="filter-btn" data-filter="data-eng" role="tab">Data Engineering</button>
+              </div>
+
+              <div class="project-item" data-cats="data-eng analytics architecture">
+                <div class="project-number">01</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="SQL Data Warehouse image">
+                    <img src="./images/sql-warehouse.webp" alt="SQL Data Warehouse cover" />
+                  </a>
+                  <h2 class="project-title">
+                    SQL Data Warehouse & Analytics
+                    <span class="project-year">- Portfolio Project</span>
+                  </h2>
+                  <p class="project-description">
+                    End‑to‑end data warehousing project using Medallion Architecture (Bronze/Silver/Gold) with clean ETL pipelines, star‑schema modeling, and SQL analytics to deliver actionable insights. See the <a href="https://github.com/elboyer228/sql-data-warehouse.git" style="text-decoration: none; color: #666;"><i>GitHub repository</i></a>.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">SQL</span>
+                    <span class="skill-tag">Data Modeling</span>
+                    <span class="skill-tag">ETL</span>
+                    <span class="skill-tag">Data Engineering</span>
+                    <span class="skill-tag">Analytics</span>
+                    <span class="skill-tag">Data Architecture</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ux-ui">
+                <div class="project-number">02</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="Travel AI image">
+                    <img src="./images/travelise.png" alt="Well-being aware AI agent cover" />
+                  </a>
+                  <div class="project-text">
+                    <h2 class="project-title">
+                      Well-being aware AI agent for travel
+                      <span class="project-year">- Autumn 2025</span>
+                    </h2>
+                    <p class="project-description"><i>Human-Computer Interaction Lab – EPFL</i>, Lausanne, Switzerland</p>
+                    <p class="project-description">
+                      Developed UX research pipelines including context scenarios, personas, and adaptive prototypes to evaluate AI‑driven personalization. Aimed to design a travel assistant that supports user wellbeing through contextual recommendations and balanced activity planning.
+                    </p>
+                    <div class="skills-container">
+                      <span class="skill-tag">UI/UX</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="data-eng analytics ux-ui">
+                <div class="project-number">03</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="VisualEstate image">
+                    <img src="./images/visualestate.png" alt="VisualEstate cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Data Visualization Project - <i>VisualEstate</i> 
+                    <span class="project-year">- Spring 2025</span>
+                  </h2>
+                  <p class="project-description">
+                    Check out the <a href="https://com-480-data-visualization.github.io/VisualEstate/" style="text-decoration: none; color: #666;"><i>website</i></a> and the <a href="https://github.com/com-480-data-visualization/VisualEstate.git" style="text-decoration: none; color: #666;"><i>github repository</i></a> to check out the project. We used real estate dataset that on which we performed exploratory data analysis and data visualization to create a website that allows users to explore the data and visualize it in a way that is easy to understand.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">Data Visualization</span>
+                    <span class="skill-tag">EDA</span>
+                    <span class="skill-tag">Data Cleaning</span>
+                    <span class="skill-tag">Jupyter Notebooks</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="data-eng">
+                <div class="project-number">04</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="Distributed Systems image">
+                    <img src="./images/distributed.avif" alt="Distributed Systems cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Reliable Communication in Distributed Systems
+                    <span class="project-year">- Sept. - Dec. 2025</span>
+                  </h2>
+                  <p class="project-description">
+                    Implemented Perfect Links, FIFO Broadcast, and Lattice Agreement abstractions in C++17 using UDP sockets. Ensured reliable, ordered, and consistent message delivery under asynchronous and failure-prone conditions. Tested and optimized performance under simulated network delay, loss, and process crashes.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">C/C++</span>
+                    <span class="skill-tag">Network Communication</span>
+                    <span class="skill-tag">Low-level</span>
+                    <span class="skill-tag">Distributed Systems</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="data-eng ml analytics">
+                <div class="project-number">05</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="Large-scale data projects image">
+                    <img src="./images/sbb.png" alt="Large Scale Data Projects cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Large Scale Data Projects
+                    <span class="project-year">- Spring 2025</span>
+                  </h2>
+                  <ul class="project-description">
+                    <li>Time-series cleaning, EDA, clustering and Lasso regression (pandas, scikit-learn).</li>
+                    <li>Large transport dataset cleaning and preprocessing with SQL and Trino (GTFS/actual data).</li>
+                    <li>Large-scale feature engineering with Spark (window functions, ML) and delay classification models.</li>
+                    <li>Final project: risk-aware routing combining timetable algorithms, ML delay prediction, and Monte Carlo simulation on the SBB network.</li>
+                  </ul>
+                  <div class="skills-container">
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Spark</span>
+                    <span class="skill-tag">Big Data</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ux-ui">
+                <div class="project-number">06</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="Web design local projects image">
+                    <img src="./images/web-design-local.png" alt="Web Design projects for local customers cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Web Design projects for local customers
+                    <span class="project-year">- Summer 2025</span>
+                  </h2>
+                  <p class="project-description">
+                    Built two websites for local Lausanne shops, focusing on clean UX, responsive layouts, and fast loading times. You can view them here:
+                    <a href="https://www.rushcoffee.ch/" style="text-decoration: none; color: #666;"><i>rushcoffee.ch</i></a>
+                    and
+                    <a href="https://pifbistro.ch/" style="text-decoration: none; color: #666;"><i>pifbistro.ch</i></a>.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">Web Design</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ml">
+                <div class="project-number">07</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="LLM Unlearning image">
+                    <img src="./images/llm-unlearning.png" alt="LLM Unlearning cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Context-Dependent Unlearning in Language Models
+                    <span class="project-year">- Oct. - Dec. 2024</span>
+                  </h2>
+                  <p class="project-description">
+                    Collaborated with LiGHT Lab in EPFL's Machine Learning course (CS-433). Applied prompt engineering & parameter updates (AdaLoRA, WISE) to reduce bias without retraining on Meditron, an open-source LLMs. Refined model behavior to enhance accuracy, fairness, and ethical AI in medical applications.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Prompt Engineering</span>
+                    <span class="skill-tag">AdaLoRA</span>
+                    <span class="skill-tag">WISE</span>
+                    <span class="skill-tag">Ethical AI</span>
+                    <span class="skill-tag">Medical AI</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ml analytics">
+                <div class="project-number">08</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="CVD Risk image">
+                    <img src="./images/cvd-risk.png" alt="CVD Risk cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Predicting the Risk of Developing Cardiovascular Disease
+                    <span class="project-year">- Sept. – Oct. 2024</span>
+                  </h2>
+                  <p class="project-description">
+                    Machine Learning project to predict cardiovascular disease risk from diverse health indicators. Implemented ML preprocessing and algorithms entirely from scratch (no pandas or ML libraries). Code:
+                    <a href="https://github.com/elboyer228/MLProjectMA1.git" style="text-decoration: none; color: #666;"><i>GitHub repository</i></a>.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">ML Algorithm Implementation</span>
+                    <span class="skill-tag">ML Pipelines</span>
+                    <span class="skill-tag">Data Preprocessing</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ml">
+                <div class="project-number">09</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="Lemanic Hackathon image">
+                    <img src="./images/lemanic.png" alt="Lemanic Hackathon cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Lemanic Life Sciences Hackathon 2024 - <i>Aberrant Speech Recognition in Parkinson's Patients</i>
+                    <span class="project-year">- April 2024</span>
+                  </h2>
+                  <p class="project-description">
+                    Awarded 1st prize for our project on Aberrant Speech Recognition in Parkinson's Patients. Integrated a machine learning model into a user interface to detect depression in Parkinson's patients, enabling easier medical follow-up.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Speech Recognition</span>
+                    <span class="skill-tag">User Interface</span>
+                    <span class="skill-tag">Medical Technology</span>
+                    <span class="skill-tag">Hackathon</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ml chemistry analytics">
+                <div class="project-number">10</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="LC Retention image">
+                    <img src="./images/lc-retention.png" alt="Liquid Chromatography retention times cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Predicting Drug Retention Times in Liquid Chromatography
+                    <span class="project-year">- Dec. 2023</span>
+                  </h2>
+                  <p class="project-description">
+                    Ranked 4th out of 43 teams based on accuracy. Machine learning applied to key retention time features for accurate drug analysis using PyTorch and Keras. Source code available on the
+                    <a href="https://github.com/elboyer228/MLProject.git" style="text-decoration: none; color: #666;"><i>GitHub repository</i></a>.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">Keras</span>
+                    <span class="skill-tag">Machine Learning</span>
+                    <span class="skill-tag">Drug Analysis</span>
+                    <span class="skill-tag">Liquid Chromatography</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="ml research">
+                <div class="project-number">11</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="NetPyNE image">
+                    <img src="./images/netpyne.png" alt="NetPyNE cover" />
+                  </a>
+                  <h2 class="project-title">
+                    NetpyNE Library Exploration and Modeling of Simplified Neural Networks
+                    <span class="project-year">- July-August 2023</span>
+                  </h2>
+                  <p class="project-description">
+                    Bachelor's project at the Translational Neural Engineering Lab - Biotech Campus Geneva. Exploring NetPyNE as a solution for modeling simplified yet accurate neural network simulation.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">NetPyNE</span>
+                    <span class="skill-tag">Neural Networks</span>
+                    <span class="skill-tag">Neural Engineering</span>
+                    <span class="skill-tag">Simulation</span>
+                    <span class="skill-tag">Research</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="section" style="--section-accent:#C0DAE6">
+          <div class="section-header">
+            <div class="badge">04</div>
+            <h2>Get in touch</h2>
+          </div>
+          <div class="section-body reveal">
+            <p>Feel free to reach out for collaborations or opportunities.</p>
+            <div class="contact-box">
+              <div class="contact-card">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    <rect x="3" y="5" width="18" height="14" rx="3" stroke="currentColor" stroke-width="2"/>
+                  </svg>
+                </div>
+                <div class="contact-info">
+                  <div class="contact-label">Email</div>
+                  <a class="contact-value" href="mailto:elise.boyer@epfl.ch" rel="noopener">elise.boyer@epfl.ch</a>
+                </div>
+              </div>
+
+              <div class="contact-card">
+                <div class="contact-icon" aria-hidden="true">
+                  <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                    <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2" />
+                    <path d="M8 10v6M8 8.5a.75.75 0 100-1.5.75.75 0 000 1.5zM16 16v-3a2 2 0 00-4 0v3" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
+                <div class="contact-info">
+                  <div class="contact-label">LinkedIn</div>
+                  <a class="contact-value" href="https://www.linkedin.com/in/elise-boyer-ab15b0267" target="_blank" rel="noopener">www.linkedin.com/in/elise-boyer-ab15b0267</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+</html>
+
+

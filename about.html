@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>About</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a href="./index.html" class="back-btn" aria-label="Back to home">
+      <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+        <path d="M15 18l-6-6 6-6" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+    </a>
+    <div class="layout">
+      <aside class="sidebar">
+        <nav class="sections" aria-label="Sections">
+          <ul>
+            <li class="nav-item active" data-target="education" data-color="#1e3a8a"><a href="#education">Education</a></li>
+            <li class="nav-item" data-target="skills" data-color="#2563eb"><a href="#skills">Skills</a></li>
+            <li class="nav-item" data-target="interests" data-color="#93c5fd"><a href="#interests">Personal interests</a></li>
+          </ul>
+        </nav>
+      </aside>
+
+      <main class="content">
+        <section id="education" class="section" style="--section-accent:#1e3a8a">
+          <div class="section-header">
+            <div class="badge">01</div>
+            <h2>Education</h2>
+          </div>
+          <div class="section-body reveal section-body--plain">
+            <div class="edu-grid">
+              <article class="edu-card">
+                <h3 class="edu-degree">Master's Degree</h3>
+                <div class="edu-field">Data Science</div>
+                <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
+                <div class="edu-years">2025 - Present</div>
+              </article>
+              <article class="edu-card">
+                <h3 class="edu-degree">Bachelor's Degree</h3>
+                <div class="edu-field">Life Sciences Engineering</div>
+                <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
+                <div class="edu-years">2020 - 2025</div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills" class="section" style="--section-accent:#2563eb">
+          <div class="section-header">
+            <div class="badge">02</div>
+            <h2>Skills</h2>
+          </div>
+          <div class="section-body reveal section-body--plain">
+            <div class="skill-groups">
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Programming Languages</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                  <div class="skill-icon"><i class="devicon-c-plain colored"></i><span>C</span></div>
+                  <div class="skill-icon"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+                  <div class="skill-icon"><i class="devicon-swift-plain colored"></i><span>Swift</span></div>
+                  <div class="skill-icon"><i class="devicon-r-original colored"></i><span>R</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Data Visualization</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/matplotlib.webp" alt="Matplotlib" /><span>Matplotlib</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/seaborn.svg" alt="Seaborn" /><span>Seaborn</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/plotly.png" alt="Plotly" /><span>Plotly</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/d3.png" alt="D3.js" /><span>D3.js</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Machine Learning</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/sklearn.svg" alt="Scikit-learn" /><span>Scikit‑learn</span></div>
+                  <div class="skill-icon"><i class="devicon-tensorflow-original colored"></i><span>TensorFlow</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/keras.png" alt="Keras" /><span>Keras</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Frontend Development</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                  <div class="skill-icon"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
+                  <div class="skill-icon"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/swiftui.png" alt="SwiftUI" /><span>SwiftUI</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Databases</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><i class="devicon-postgresql-plain colored"></i><span>SQL (PostgreSQL)</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Big Data</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/spark.png" alt="Apache Spark" /><span>Apache Spark</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/hadoop.png" alt="Hadoop" /><span>Hadoop</span></div>
+                  <div class="skill-icon"><i class="devicon-apachekafka-original colored"></i><span>Kafka</span></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="interests" class="section" style="--section-accent:#93c5fd">
+          <div class="section-header">
+            <div class="badge">03</div>
+            <h2>Personal interests</h2>
+          </div>
+          <div class="section-body reveal">
+            <p>Share brief notes about your interests and activities outside of work/study here.</p>
+          </div>
+        </section>
+      </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="./main.js"></script>
+  </body>
+  </html>
+
+
