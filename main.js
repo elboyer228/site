@@ -1,16 +1,92 @@
 /* global gsap, ScrollTrigger */
+
+// ── Hero mouse-trail ─────────────────────────────────────────
+(function () {
+  const hero = document.querySelector('.hero');
+  if (!hero) return;
+
+  const canvas = document.createElement('canvas');
+  canvas.style.cssText = 'position:absolute;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:1;';
+  const inner = hero.querySelector('.hero-inner');
+  if (inner) { inner.style.position = 'relative'; inner.style.zIndex = '2'; }
+  hero.insertBefore(canvas, hero.firstChild);
+
+  const ctx = canvas.getContext('2d');
+  let W, H;
+  const trail = []; // { x, y, t }
+  const DURATION = 460; // ms before a point expires
+
+  function resize() {
+    W = canvas.width = hero.offsetWidth;
+    H = canvas.height = hero.offsetHeight;
+  }
+  resize();
+  window.addEventListener('resize', resize);
+
+  hero.addEventListener('mousemove', (e) => {
+    const r = hero.getBoundingClientRect();
+    trail.push({ x: e.clientX - r.left, y: e.clientY - r.top, t: performance.now() });
+  });
+
+  hero.addEventListener('mouseleave', () => (trail.length = 0));
+
+  (function loop() {
+    const now = performance.now();
+    // Drop expired points from the tail
+    while (trail.length > 0 && now - trail[0].t > DURATION) trail.shift();
+
+    ctx.clearRect(0, 0, W, H);
+
+    if (trail.length > 1) {
+      ctx.lineCap = 'round';
+      ctx.lineJoin = 'round';
+
+      for (let i = 1; i < trail.length; i++) {
+        const t = i / trail.length; // 0 = oldest end, 1 = cursor
+
+        // Wide soft outer glow
+        ctx.beginPath();
+        ctx.moveTo(trail[i - 1].x, trail[i - 1].y);
+        ctx.lineTo(trail[i].x, trail[i].y);
+        ctx.strokeStyle = `rgba(236,72,153,${t * 0.32})`;
+        ctx.lineWidth = t * 20 + 4;
+        ctx.stroke();
+
+        // Thin bright core
+        ctx.beginPath();
+        ctx.moveTo(trail[i - 1].x, trail[i - 1].y);
+        ctx.lineTo(trail[i].x, trail[i].y);
+        ctx.strokeStyle = `rgba(255,160,210,${t * 0.95})`;
+        ctx.lineWidth = t * 2.5 + 0.5;
+        ctx.stroke();
+      }
+    }
+
+    requestAnimationFrame(loop);
+  })();
+})();
+// ─────────────────────────────────────────────────────────────
+
+// ─────────────────────────────────────────────────────────────
+
 (function () {
   if (typeof gsap === "undefined") return;
   gsap.registerPlugin(ScrollTrigger);
 
-  // Hero fade-in on initial load
-  gsap.from(['.hero-title', '.hero-sub', '.hero-visual'], {
-    y: 18,
-    opacity: 0,
-    duration: 0.8,
-    ease: 'power2.out',
-    stagger: 0.12,
-    overwrite: 'auto'
+  // ── Nav pill slide down ───────────────────────────────────────
+  gsap.from('.sidebar', {
+    y: -30, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.2
+  });
+
+  // ── Hero ─────────────────────────────────────────────────────
+  gsap.from('.hero-title', {
+    y: 40, opacity: 0, duration: 1.0, ease: 'power3.out', delay: 0.5
+  });
+  gsap.from('.hero-sub', {
+    y: 28, opacity: 0, duration: 0.9, ease: 'power3.out', delay: 0.72
+  });
+  gsap.from('.hero-visual', {
+    scale: 0.88, opacity: 0, duration: 1.1, ease: 'power3.out', delay: 0.88
   });
 
   // Smooth scroll on sidebar clicks
@@ -51,6 +127,11 @@
     navItems.forEach((item) => {
       item.classList.toggle('active', item.dataset.target === targetId);
     });
+    // When on the hero, reset accent to default pink and bail
+    if (!targetId) {
+      document.documentElement.style.setProperty('--active', '#e879f9');
+      return;
+    }
     // Update global accent color based on the active section
     const sectionEl = document.getElementById(targetId);
     let color = '';
@@ -66,23 +147,16 @@
     }
   }
 
-  // Animate each section's content sliding in on enter
-  sections.forEach((section) => {
-    const body = section.querySelector('.reveal');
-    if (!body) return;
-    gsap.from(body, {
-      x: 80,
-      opacity: 0,
-      duration: 0.9,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: section,
-        start: 'top 70%',
-        toggleActions: 'play none none reverse'
-      }
+  // ── Section headers (badge + h2) — slide in from left ────────
+  gsap.utils.toArray('.section-header').forEach((header) => {
+    gsap.from(header.children, {
+      x: -32, opacity: 0, duration: 0.65, ease: 'power2.out', stagger: 0.12,
+      scrollTrigger: { trigger: header, start: 'top 82%', toggleActions: 'play none none reverse' }
     });
+  });
 
-    // Highlight corresponding nav item while this section is in view
+  // ── Nav highlight per section ─────────────────────────────────
+  sections.forEach((section) => {
     const id = section.getAttribute('id');
     ScrollTrigger.create({
       trigger: section,
@@ -93,43 +167,72 @@
     });
   });
 
-  // Fade-up animation for elements marked as reveal-up (e.g., travel project content)
-  const fadeUps = gsap.utils.toArray('.reveal-up');
-  fadeUps.forEach((el) => {
-    gsap.from(el, {
-      y: 40,
-      opacity: 0,
-      duration: 0.8,
-      ease: 'power2.out',
-      scrollTrigger: {
-        trigger: el,
-        start: 'top 85%',
-        toggleActions: 'play none none reverse'
-      }
-    });
+  // Clear highlight when scrolling back up to the hero
+  ScrollTrigger.create({
+    trigger: '.hero',
+    start: 'top center',
+    end: 'bottom center',
+    onEnter: () => setActive(null),
+    onEnterBack: () => setActive(null)
   });
-  // Projects grid: slide each card in as it enters (stagger by row)
+
+  // ── About — paragraphs slide up one by one ────────────────────
+  gsap.from('#about .section-body p, #about .section-body .btn', {
+    y: 36, opacity: 0, duration: 0.78, ease: 'power2.out', stagger: 0.22,
+    scrollTrigger: { trigger: '#about', start: 'top 65%', toggleActions: 'play none none reverse' }
+  });
+
+  // ── Interests cards — fade up with stagger ────────────────────
+  gsap.from('#interests .card', {
+    y: 40, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.14,
+    scrollTrigger: { trigger: '#interests', start: 'top 72%', toggleActions: 'play none none reverse' }
+  });
+
+  // ── Projects grid — batch reveal ─────────────────────────────
   const projectItems = '.projects-container .project-item';
   if (document.querySelector(projectItems)) {
-    gsap.set(projectItems, { y: 24, opacity: 0 });
+    gsap.set(projectItems, { y: 28, opacity: 0 });
     ScrollTrigger.batch(projectItems, {
-      start: 'top 85%',
-      onEnter: (els) =>
-        gsap.to(els, {
-          y: 0,
-          opacity: 1,
-          duration: 0.6,
-          ease: 'power2.out',
-          stagger: 0.12
-        }),
+      start: 'top 88%',
+      onEnter: (els) => gsap.to(els, { y: 0, opacity: 1, duration: 0.6, ease: 'power2.out', stagger: 0.1 }),
       once: true
     });
   }
-  // Initialize accent color on load
-  const initialTarget =
-    document.querySelector('.sections .nav-item.active')?.dataset.target ||
-    (sections[0] && sections[0].id);
-  if (initialTarget) setActive(initialTarget);
+
+  // ── Education cards ───────────────────────────────────────────
+  gsap.from('#education .edu-card', {
+    y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.16,
+    scrollTrigger: { trigger: '#education', start: 'top 75%', toggleActions: 'play none none reverse' }
+  });
+
+  // ── Skills groups ─────────────────────────────────────────────
+  gsap.from('#skills .skill-group', {
+    y: 32, opacity: 0, duration: 0.65, ease: 'power2.out', stagger: 0.1,
+    scrollTrigger: { trigger: '#skills', start: 'top 75%', toggleActions: 'play none none reverse' }
+  });
+
+  // ── Contact cards ─────────────────────────────────────────────
+  gsap.from('#contact .contact-card', {
+    y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.18,
+    scrollTrigger: { trigger: '#contact', start: 'top 75%', toggleActions: 'play none none reverse' }
+  });
+  gsap.from('#contact .section-body > p', {
+    y: 20, opacity: 0, duration: 0.6, ease: 'power2.out',
+    scrollTrigger: { trigger: '#contact', start: 'top 75%', toggleActions: 'play none none reverse' }
+  });
+
+  // ── Generic reveal-up fallback (skip elements with dedicated animations) ──
+  gsap.utils.toArray('.reveal-up')
+    .filter((el) => !el.closest('#skills'))
+    .forEach((el) => {
+      gsap.from(el, {
+        y: 40, opacity: 0, duration: 0.8, ease: 'power2.out',
+        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' }
+      });
+    });
+
+  // On load the hero is visible — no nav item should be highlighted
+  setActive(null);
 })();
 
 

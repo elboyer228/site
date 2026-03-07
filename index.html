@@ -6,46 +6,44 @@
     <title>Home</title>
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <aside class="sidebar">
+      <nav class="sections" aria-label="Sections">
+        <ul>
+          <li class="nav-item" data-target="about" data-color="#60a5fa"><a href="#about">About me</a></li>
+          <li class="nav-item" data-target="interests" data-color="#f472b6"><a href="#interests">Interests</a></li>
+          <li class="nav-item" data-target="projects" data-color="#4ade80"><a href="#projects">Projects</a></li>
+          <li class="nav-item" data-target="contact" data-color="#38bdf8"><a href="#contact">Get in touch</a></li>
+        </ul>
+      </nav>
+    </aside>
     <section class="hero">
       <div class="hero-inner">
-        <h1 class="hero-title">Hi, I'm Élise</h1>
-        <p class="hero-sub">Welcome to my <em>portfolio</em></p>
-        <div class="hero-visual">
-          <img src="logo.png" loading="lazy" />
-        </div>
+        <h1 class="hero-title">Hi, I'm Élise !  </h1>
+        <p class="hero-sub">Welcome to my <em>portfolio</em> </p>
+       
       </div>
     </section>
 
     <div class="layout">
-      <aside class="sidebar">
-        <nav class="sections" aria-label="Sections">
-          <ul>
-            <li class="nav-item active" data-target="about" data-color="#B8D587"><a href="#about">About me</a></li>
-            <li class="nav-item" data-target="interests" data-color="#CFBACC"><a href="#interests">Interests</a></li>
-            <li class="nav-item" data-target="projects" data-color="#C5CD90"><a href="#projects">Projects</a></li>
-            <li class="nav-item" data-target="contact" data-color="#C0DAE6"><a href="#contact">Get in touch</a></li>
-          </ul>
-        </nav>
-      </aside>
-
       <main class="content">
-        <section id="about" class="section" style="--section-accent:#B8D587">
+        <section id="about" class="section" style="--section-accent:#60a5fa">
           <div class="section-header">
             <div class="badge">01</div>
             <h2>About me</h2>
           </div>
-          <div class="section-body reveal section-body--center">
-            <p>I'm a Master's student in Data Science at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: black; text-decoration: none; font-style: italic;">Federal Institute of Technology in Lausanne (EPFL)</a>.</p>
-            <p>Yes, I <i>genuinely</i> do enjoy cleaning datasets and building data pipelines to extract data insights that help people make <i>better</i> decisions.</p>
-            <p>I'm looking for a 6-month internship starting in September 2026 at a company that values creativity and innovation, where I can grow both <i>professionally</i> and <i>personally</i>.</p>
-            <a href="about.html" class="btn btn-outline">Learn more about my background and skills</a>
+          <div class="section-body section-body--center">
+            <p>I'm a Master's student in <strong>Data Science</strong> at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: white; text-decoration: none"><strong>Federal Institute of Technology in Lausanne (EPFL)</strong></a>.</p>
+            <p>Yes, I <i>genuinely</i> do enjoy <strong>cleaning datasets</strong> and <strong>building data pipelines</strong> to extract data insights that help people make <strong>better decisions</strong>.</p>
+            <p>I'm looking for a <strong>6-month internship</strong> starting in September 2026 at a company that values creativity and innovation, where I can grow both <i>professionally</i> and <i>personally</i>.</p>
+            
           </div>
         </section>
 
-        <section id="interests" class="section" style="--section-accent:#CFBACC">
+        <section id="interests" class="section" style="--section-accent:#f472b6">
           <div class="section-header">
             <div class="badge">02</div>
             <h2>Interests</h2>
@@ -87,7 +85,7 @@
           </div>
         </section>
 
-        <section id="projects" class="section" style="--section-accent:#C5CD90">
+        <section id="projects" class="section" style="--section-accent:#4ade80">
           <div class="section-header">
             <div class="badge">03</div>
             <h2>Projects</h2>
@@ -359,9 +357,98 @@
           </div>
         </section>
 
-        <section id="contact" class="section" style="--section-accent:#C0DAE6">
+        <section id="education" class="section" style="--section-accent:#818cf8">
           <div class="section-header">
             <div class="badge">04</div>
+            <h2>Education</h2>
+          </div>
+          <div class="section-body reveal section-body--plain">
+            <div class="edu-grid">
+              <article class="edu-card">
+                <h3 class="edu-degree">Master's Degree</h3>
+                <div class="edu-field">Data Science</div>
+                <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
+                <div class="edu-years">2025 - Present</div>
+              </article>
+              <article class="edu-card">
+                <h3 class="edu-degree">Bachelor's Degree</h3>
+                <div class="edu-field">Life Sciences Engineering</div>
+                <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
+                <div class="edu-years">2020 - 2025</div>
+              </article>
+            </div>
+          </div>
+        </section>
+
+        <section id="skills" class="section" style="--section-accent:#fb923c">
+          <div class="section-header">
+            <div class="badge">05</div>
+            <h2>Skills</h2>
+          </div>
+          <div class="section-body reveal section-body--plain">
+            <div class="skill-groups">
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Programming Languages</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><i class="devicon-python-plain colored"></i><span>Python</span></div>
+                  <div class="skill-icon"><i class="devicon-c-plain colored"></i><span>C</span></div>
+                  <div class="skill-icon"><i class="devicon-cplusplus-plain colored"></i><span>C++</span></div>
+                  <div class="skill-icon"><i class="devicon-swift-plain colored"></i><span>Swift</span></div>
+                  <div class="skill-icon"><i class="devicon-r-original colored"></i><span>R</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Data Visualization</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/matplotlib.webp" alt="Matplotlib" /><span>Matplotlib</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/seaborn.svg" alt="Seaborn" /><span>Seaborn</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/plotly.png" alt="Plotly" /><span>Plotly</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/d3.png" alt="D3.js" /><span>D3.js</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Machine Learning</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/sklearn.svg" alt="Scikit-learn" /><span>Scikit‑learn</span></div>
+                  <div class="skill-icon"><i class="devicon-tensorflow-original colored"></i><span>TensorFlow</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/keras.png" alt="Keras" /><span>Keras</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Frontend Development</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
+                  <div class="skill-icon"><i class="devicon-css3-plain colored"></i><span>CSS</span></div>
+                  <div class="skill-icon"><i class="devicon-javascript-plain colored"></i><span>JavaScript</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/swiftui.png" alt="SwiftUI" /><span>SwiftUI</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Databases</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><i class="devicon-postgresql-plain colored"></i><span>SQL (PostgreSQL)</span></div>
+                </div>
+              </section>
+
+              <section class="skill-group reveal-up">
+                <h3 class="skill-heading">Big Data</h3>
+                <div class="skill-icons">
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/spark.png" alt="Apache Spark" /><span>Apache Spark</span></div>
+                  <div class="skill-icon"><img class="brand-icon" src="./icons/hadoop.png" alt="Hadoop" /><span>Hadoop</span></div>
+                  <div class="skill-icon"><i class="devicon-apachekafka-original colored"></i><span>Kafka</span></div>
+                </div>
+              </section>
+            </div>
+          </div>
+        </section>
+
+        <section id="contact" class="section" style="--section-accent:#38bdf8">
+          <div class="section-header">
+            <div class="badge">06</div>
             <h2>Get in touch</h2>
           </div>
           <div class="section-body reveal">
