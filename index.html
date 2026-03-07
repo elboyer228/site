@@ -7,6 +7,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
+    <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -32,25 +33,24 @@
       <main class="content">
         <section id="about" class="section" style="--section-accent:#60a5fa">
           <div class="section-header">
-            <div class="badge">01</div>
-            <h2>About me</h2>
+            <div class="badge" data-aos="fade-right">01</div>
+            <h2 data-aos="fade-right" data-aos-delay="120">About me</h2>
           </div>
           <div class="section-body section-body--center">
-            <p>I'm a Master's student in <strong>Data Science</strong> at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: white; text-decoration: none"><strong>Federal Institute of Technology in Lausanne (EPFL)</strong></a>.</p>
-            <p>Yes, I <i>genuinely</i> do enjoy <strong>cleaning datasets</strong> and <strong>building data pipelines</strong> to extract data insights that help people make <strong>better decisions</strong>.</p>
-            <p>I'm looking for a <strong>6-month internship</strong> starting in September 2026 at a company that values creativity and innovation, where I can grow both <i>professionally</i> and <i>personally</i>.</p>
-            
+            <p data-aos="fade-up" data-aos-delay="0">I'm a Master's student in <strong>Data Science</strong> at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: white; text-decoration: none"><strong>Federal Institute of Technology in Lausanne (EPFL)</strong></a>.</p>
+            <p data-aos="fade-up" data-aos-delay="150">Yes, I <i>genuinely</i> do enjoy <strong>cleaning datasets</strong> and <strong>building data pipelines</strong> to extract data insights that help people make <strong>better decisions</strong>.</p>
+            <p data-aos="fade-up" data-aos-delay="300">I'm looking for a <strong>6-month internship</strong> starting in September 2026 at a company that values creativity and innovation, where I can grow both <i>professionally</i> and <i>personally</i>.</p>
           </div>
         </section>
 
         <section id="interests" class="section" style="--section-accent:#f472b6">
           <div class="section-header">
-            <div class="badge">02</div>
-            <h2>Interests</h2>
+            <div class="badge" data-aos="fade-right">02</div>
+            <h2 data-aos="fade-right" data-aos-delay="120">Interests</h2>
           </div>
-          <div class="section-body-interests reveal section-body--plain">
+          <div class="section-body-interests section-body--plain">
             <div class="cards">
-              <article class="card">
+              <article class="card" data-aos="zoom-in" data-aos-delay="0">
                 <div class="card-icon" aria-hidden="true">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M4 20v-6m4 6V4m4 16v-9m4 9v-3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </div>
@@ -58,7 +58,7 @@
                 <p class="card-desc">Extracting high‑value insights from raw data through rigorous querying, statistics, and exploration to answer real questions and guide decisions.</p>
               </article>
 
-              <article class="card">
+              <article class="card" data-aos="zoom-in" data-aos-delay="100">
                 <div class="card-icon" aria-hidden="true">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><ellipse cx="12" cy="5" rx="8" ry="3" stroke="currentColor" stroke-width="2"/><path d="M4 5v6c0 1.7 3.6 3 8 3s8-1.3 8-3V5" stroke="currentColor" stroke-width="2"/><path d="M4 11v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6" stroke="currentColor" stroke-width="2"/></svg>
                 </div>
@@ -66,7 +66,7 @@
                 <p class="card-desc">Building robust data pipelines and infrastructure to enable scalable data processing and analytics.</p>
               </article>
 
-              <article class="card">
+              <article class="card" data-aos="zoom-in" data-aos-delay="200">
                 <div class="card-icon" aria-hidden="true">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><circle cx="7" cy="7" r="2.5" stroke="currentColor" stroke-width="2"/><circle cx="17" cy="17" r="2.5" stroke="currentColor" stroke-width="2"/><path d="M9 7h9M7 9v9" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
                 </div>
@@ -74,12 +74,23 @@
                 <p class="card-desc">Designing intuitive and engaging experiences that bridge the gap between functionality and aesthetics.</p>
               </article>
 
-              <article class="card">
+              <article class="card" data-aos="zoom-in" data-aos-delay="300">
                 <div class="card-icon" aria-hidden="true">
                   <svg width="28" height="28" viewBox="0 0 24 24" fill="none"><path d="M8 8L4 12l4 4M16 8l4 4-4 4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </div>
                 <h3 class="card-title">Web Development</h3>
                 <p class="card-desc">Building modern, responsive applications that combine technical excellence with creative design.</p>
+              </article>
+
+              <article class="card card--wide" data-aos="fade-up" data-aos-delay="150">
+                <div class="card-icon" aria-hidden="true">
+                  <svg width="28" height="28" viewBox="0 0 24 24" fill="none">
+                    <path d="M6 3c0 3 3 3 3 6s-3 3-3 6m6-12c0 3 3 3 3 6s-3 3-3 6m6-12c0 3-3 3-3 6s3 3 3 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                    <path d="M3 8h18M3 16h18" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-dasharray="2 2"/>
+                  </svg>
+                </div>
+                <h3 class="card-title">Precision Medicine & Personalised Health</h3>
+                <p class="card-desc">My long-term ambition is to bridge data science and computer science with precisionmedicine using machine learning and big data to help move towards more personalised treatments and drive meaningful innovations in the way we understand and care for human health.</p>
               </article>
             </div>
           </div>
@@ -87,8 +98,8 @@
 
         <section id="projects" class="section" style="--section-accent:#4ade80">
           <div class="section-header">
-            <div class="badge">03</div>
-            <h2>Projects</h2>
+            <div class="badge" data-aos="fade-right">03</div>
+            <h2 data-aos="fade-right" data-aos-delay="120">Projects</h2>
           </div>
           <div class="section-body reveal section-body--plain">
             <div class="projects-container">
@@ -359,18 +370,18 @@
 
         <section id="education" class="section" style="--section-accent:#818cf8">
           <div class="section-header">
-            <div class="badge">04</div>
-            <h2>Education</h2>
+            <div class="badge" data-aos="fade-right">04</div>
+            <h2 data-aos="fade-right" data-aos-delay="120">Education</h2>
           </div>
-          <div class="section-body reveal section-body--plain">
+          <div class="section-body section-body--plain">
             <div class="edu-grid">
-              <article class="edu-card">
+              <article class="edu-card" data-aos="flip-up" data-aos-delay="0">
                 <h3 class="edu-degree">Master's Degree</h3>
                 <div class="edu-field">Data Science</div>
                 <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
                 <div class="edu-years">2025 - Present</div>
               </article>
-              <article class="edu-card">
+              <article class="edu-card" data-aos="flip-up" data-aos-delay="150">
                 <h3 class="edu-degree">Bachelor's Degree</h3>
                 <div class="edu-field">Life Sciences Engineering</div>
                 <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
@@ -382,12 +393,12 @@
 
         <section id="skills" class="section" style="--section-accent:#fb923c">
           <div class="section-header">
-            <div class="badge">05</div>
-            <h2>Skills</h2>
+            <div class="badge" data-aos="fade-right">05</div>
+            <h2 data-aos="fade-right" data-aos-delay="120">Skills</h2>
           </div>
-          <div class="section-body reveal section-body--plain">
+          <div class="section-body section-body--plain">
             <div class="skill-groups">
-              <section class="skill-group reveal-up">
+              <section class="skill-group" data-aos="fade-up" data-aos-delay="0">
                 <h3 class="skill-heading">Programming Languages</h3>
                 <div class="skill-icons">
                   <div class="skill-icon"><i class="devicon-python-plain colored"></i><span>Python</span></div>
@@ -398,7 +409,7 @@
                 </div>
               </section>
 
-              <section class="skill-group reveal-up">
+              <section class="skill-group" data-aos="fade-up" data-aos-delay="80">
                 <h3 class="skill-heading">Data Visualization</h3>
                 <div class="skill-icons">
                   <div class="skill-icon"><img class="brand-icon" src="./icons/matplotlib.webp" alt="Matplotlib" /><span>Matplotlib</span></div>
@@ -408,7 +419,7 @@
                 </div>
               </section>
 
-              <section class="skill-group reveal-up">
+              <section class="skill-group" data-aos="fade-up" data-aos-delay="160">
                 <h3 class="skill-heading">Machine Learning</h3>
                 <div class="skill-icons">
                   <div class="skill-icon"><img class="brand-icon" src="./icons/sklearn.svg" alt="Scikit-learn" /><span>Scikit‑learn</span></div>
@@ -417,7 +428,7 @@
                 </div>
               </section>
 
-              <section class="skill-group reveal-up">
+              <section class="skill-group" data-aos="fade-up" data-aos-delay="240">
                 <h3 class="skill-heading">Frontend Development</h3>
                 <div class="skill-icons">
                   <div class="skill-icon"><i class="devicon-html5-plain colored"></i><span>HTML5</span></div>
@@ -427,14 +438,14 @@
                 </div>
               </section>
 
-              <section class="skill-group reveal-up">
+              <section class="skill-group" data-aos="fade-up" data-aos-delay="320">
                 <h3 class="skill-heading">Databases</h3>
                 <div class="skill-icons">
                   <div class="skill-icon"><i class="devicon-postgresql-plain colored"></i><span>SQL (PostgreSQL)</span></div>
                 </div>
               </section>
 
-              <section class="skill-group reveal-up">
+              <section class="skill-group" data-aos="fade-up" data-aos-delay="400">
                 <h3 class="skill-heading">Big Data</h3>
                 <div class="skill-icons">
                   <div class="skill-icon"><img class="brand-icon" src="./icons/spark.png" alt="Apache Spark" /><span>Apache Spark</span></div>
@@ -448,13 +459,23 @@
 
         <section id="contact" class="section" style="--section-accent:#38bdf8">
           <div class="section-header">
-            <div class="badge">06</div>
-            <h2>Get in touch</h2>
+            <div class="badge" data-aos="fade-right">06</div>
+            <h2 data-aos="fade-right" data-aos-delay="120">Get in touch</h2>
           </div>
-          <div class="section-body reveal">
-            <p>Feel free to reach out for collaborations or opportunities.</p>
+          <div class="section-body">
+            <p class="contact-intro" data-aos="fade-up">Whether you have a project idea, need a website, or simply have a question — feel free to reach out. I'd love to hear from you.</p>
+            <div class="contact-meta" data-aos="fade-up" data-aos-delay="100">
+              <span class="contact-meta-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5A2.5 2.5 0 1 1 12 6.5a2.5 2.5 0 0 1 0 5z" fill="currentColor"/></svg>
+                Switzerland
+              </span>
+              <span class="contact-meta-item">
+                <svg width="15" height="15" viewBox="0 0 24 24" fill="none" aria-hidden="true"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="2"/><path d="M12 7v5l3 3" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                Responds within 24 hours
+              </span>
+            </div>
             <div class="contact-box">
-              <div class="contact-card">
+              <div class="contact-card" data-aos="fade-up" data-aos-delay="200">
                 <div class="contact-icon" aria-hidden="true">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path d="M3 7l9 6 9-6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
@@ -467,7 +488,7 @@
                 </div>
               </div>
 
-              <div class="contact-card">
+              <div class="contact-card" data-aos="fade-up" data-aos-delay="320">
                 <div class="contact-icon" aria-hidden="true">
                   <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
                     <path d="M4 4h16v16H4z" stroke="currentColor" stroke-width="2" />
@@ -485,6 +506,12 @@
       </main>
     </div>
 
+    <footer class="site-footer">
+      <p class="footer-copy">© 2026 Élise Boyer · All rights reserved</p>
+      <p class="footer-note">Designed & built by Élise Boyer</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
     <script src="./main.js"></script>

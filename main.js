@@ -41,25 +41,30 @@
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
 
-      for (let i = 1; i < trail.length; i++) {
-        const t = i / trail.length; // 0 = oldest end, 1 = cursor
+      const head = trail[trail.length - 1];
+      const tail = trail[0];
 
-        // Wide soft outer glow
-        ctx.beginPath();
-        ctx.moveTo(trail[i - 1].x, trail[i - 1].y);
-        ctx.lineTo(trail[i].x, trail[i].y);
-        ctx.strokeStyle = `rgba(236,72,153,${t * 0.32})`;
-        ctx.lineWidth = t * 20 + 4;
-        ctx.stroke();
+      // Build path once for glow layer
+      ctx.beginPath();
+      ctx.moveTo(tail.x, tail.y);
+      for (let i = 1; i < trail.length; i++) ctx.lineTo(trail[i].x, trail[i].y);
+      const glowGrad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
+      glowGrad.addColorStop(0, 'rgba(236,72,153,0)');
+      glowGrad.addColorStop(1, 'rgba(236,72,153,0.38)');
+      ctx.strokeStyle = glowGrad;
+      ctx.lineWidth = 24;
+      ctx.stroke();
 
-        // Thin bright core
-        ctx.beginPath();
-        ctx.moveTo(trail[i - 1].x, trail[i - 1].y);
-        ctx.lineTo(trail[i].x, trail[i].y);
-        ctx.strokeStyle = `rgba(255,160,210,${t * 0.95})`;
-        ctx.lineWidth = t * 2.5 + 0.5;
-        ctx.stroke();
-      }
+      // Build path once for the bright core
+      ctx.beginPath();
+      ctx.moveTo(tail.x, tail.y);
+      for (let i = 1; i < trail.length; i++) ctx.lineTo(trail[i].x, trail[i].y);
+      const coreGrad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
+      coreGrad.addColorStop(0, 'rgba(255,160,210,0)');
+      coreGrad.addColorStop(1, 'rgba(255,200,230,0.95)');
+      ctx.strokeStyle = coreGrad;
+      ctx.lineWidth = 2;
+      ctx.stroke();
     }
 
     requestAnimationFrame(loop);
@@ -147,14 +152,6 @@
     }
   }
 
-  // ── Section headers (badge + h2) — slide in from left ────────
-  gsap.utils.toArray('.section-header').forEach((header) => {
-    gsap.from(header.children, {
-      x: -32, opacity: 0, duration: 0.65, ease: 'power2.out', stagger: 0.12,
-      scrollTrigger: { trigger: header, start: 'top 82%', toggleActions: 'play none none reverse' }
-    });
-  });
-
   // ── Nav highlight per section ─────────────────────────────────
   sections.forEach((section) => {
     const id = section.getAttribute('id');
@@ -176,18 +173,6 @@
     onEnterBack: () => setActive(null)
   });
 
-  // ── About — paragraphs slide up one by one ────────────────────
-  gsap.from('#about .section-body p, #about .section-body .btn', {
-    y: 36, opacity: 0, duration: 0.78, ease: 'power2.out', stagger: 0.22,
-    scrollTrigger: { trigger: '#about', start: 'top 65%', toggleActions: 'play none none reverse' }
-  });
-
-  // ── Interests cards — fade up with stagger ────────────────────
-  gsap.from('#interests .card', {
-    y: 40, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.14,
-    scrollTrigger: { trigger: '#interests', start: 'top 72%', toggleActions: 'play none none reverse' }
-  });
-
   // ── Projects grid — batch reveal ─────────────────────────────
   const projectItems = '.projects-container .project-item';
   if (document.querySelector(projectItems)) {
@@ -199,40 +184,19 @@
     });
   }
 
-  // ── Education cards ───────────────────────────────────────────
-  gsap.from('#education .edu-card', {
-    y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.16,
-    scrollTrigger: { trigger: '#education', start: 'top 75%', toggleActions: 'play none none reverse' }
-  });
-
-  // ── Skills groups ─────────────────────────────────────────────
-  gsap.from('#skills .skill-group', {
-    y: 32, opacity: 0, duration: 0.65, ease: 'power2.out', stagger: 0.1,
-    scrollTrigger: { trigger: '#skills', start: 'top 75%', toggleActions: 'play none none reverse' }
-  });
-
-  // ── Contact cards ─────────────────────────────────────────────
-  gsap.from('#contact .contact-card', {
-    y: 36, opacity: 0, duration: 0.7, ease: 'power2.out', stagger: 0.18,
-    scrollTrigger: { trigger: '#contact', start: 'top 75%', toggleActions: 'play none none reverse' }
-  });
-  gsap.from('#contact .section-body > p', {
-    y: 20, opacity: 0, duration: 0.6, ease: 'power2.out',
-    scrollTrigger: { trigger: '#contact', start: 'top 75%', toggleActions: 'play none none reverse' }
-  });
-
-  // ── Generic reveal-up fallback (skip elements with dedicated animations) ──
-  gsap.utils.toArray('.reveal-up')
-    .filter((el) => !el.closest('#skills'))
-    .forEach((el) => {
-      gsap.from(el, {
-        y: 40, opacity: 0, duration: 0.8, ease: 'power2.out',
-        scrollTrigger: { trigger: el, start: 'top 85%', toggleActions: 'play none none reverse' }
-      });
-    });
-
   // On load the hero is visible — no nav item should be highlighted
   setActive(null);
+
+  // ── AOS init ─────────────────────────────────────────────────
+  if (typeof AOS !== 'undefined') {
+    AOS.init({
+      duration: 850,
+      easing: 'ease-out-cubic',
+      once: false,
+      offset: 80,
+      anchorPlacement: 'top-bottom',
+    });
+  }
 })();
 
 
