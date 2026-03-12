@@ -13,8 +13,14 @@
 
   const ctx = canvas.getContext('2d');
   let W, H;
+
+  // Lerped (smoothed) drawing position
+  let targetX = 0, targetY = 0, curX = 0, curY = 0;
+  let active = false;
+
   const trail = []; // { x, y, t }
-  const DURATION = 460; // ms before a point expires
+  const DURATION = 700; // ms trail lingers
+  const LERP = 0.14;    // lower = silkier lag
 
   function resize() {
     W = canvas.width = hero.offsetWidth;
@@ -25,45 +31,73 @@
 
   hero.addEventListener('mousemove', (e) => {
     const r = hero.getBoundingClientRect();
-    trail.push({ x: e.clientX - r.left, y: e.clientY - r.top, t: performance.now() });
+    targetX = e.clientX - r.left;
+    targetY = e.clientY - r.top;
+    if (!active) { curX = targetX; curY = targetY; active = true; }
   });
 
-  hero.addEventListener('mouseleave', () => (trail.length = 0));
+  hero.addEventListener('mouseleave', () => { trail.length = 0; active = false; });
+
+  // Smooth quadratic spline through midpoints — no visible joints
+  function buildPath() {
+    ctx.beginPath();
+    ctx.moveTo(trail[0].x, trail[0].y);
+    for (let i = 1; i < trail.length - 1; i++) {
+      const mx = (trail[i].x + trail[i + 1].x) * 0.5;
+      const my = (trail[i].y + trail[i + 1].y) * 0.5;
+      ctx.quadraticCurveTo(trail[i].x, trail[i].y, mx, my);
+    }
+    const last = trail[trail.length - 1];
+    ctx.lineTo(last.x, last.y);
+  }
 
   (function loop() {
     const now = performance.now();
-    // Drop expired points from the tail
+
+    // Advance lerped position and record it every frame
+    if (active) {
+      curX += (targetX - curX) * LERP;
+      curY += (targetY - curY) * LERP;
+      trail.push({ x: curX, y: curY, t: now });
+    }
+
+    // Expire old points
     while (trail.length > 0 && now - trail[0].t > DURATION) trail.shift();
 
     ctx.clearRect(0, 0, W, H);
 
-    if (trail.length > 1) {
+    if (trail.length > 2) {
       ctx.lineCap = 'round';
       ctx.lineJoin = 'round';
-
       const head = trail[trail.length - 1];
       const tail = trail[0];
 
-      // Build path once for glow layer
-      ctx.beginPath();
-      ctx.moveTo(tail.x, tail.y);
-      for (let i = 1; i < trail.length; i++) ctx.lineTo(trail[i].x, trail[i].y);
-      const glowGrad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
-      glowGrad.addColorStop(0, 'rgba(236,72,153,0)');
-      glowGrad.addColorStop(1, 'rgba(236,72,153,0.38)');
-      ctx.strokeStyle = glowGrad;
-      ctx.lineWidth = 24;
+      // Wide diffuse glow
+      buildPath();
+      const glow = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
+      glow.addColorStop(0, 'rgba(236,72,153,0)');
+      glow.addColorStop(0.6, 'rgba(236,72,153,0.18)');
+      glow.addColorStop(1, 'rgba(236,72,153,0.42)');
+      ctx.strokeStyle = glow;
+      ctx.lineWidth = 28;
       ctx.stroke();
 
-      // Build path once for the bright core
-      ctx.beginPath();
-      ctx.moveTo(tail.x, tail.y);
-      for (let i = 1; i < trail.length; i++) ctx.lineTo(trail[i].x, trail[i].y);
-      const coreGrad = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
-      coreGrad.addColorStop(0, 'rgba(255,160,210,0)');
-      coreGrad.addColorStop(1, 'rgba(255,200,230,0.95)');
-      ctx.strokeStyle = coreGrad;
-      ctx.lineWidth = 2;
+      // Mid glow ring
+      buildPath();
+      const mid = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
+      mid.addColorStop(0, 'rgba(255,100,180,0)');
+      mid.addColorStop(1, 'rgba(255,100,180,0.55)');
+      ctx.strokeStyle = mid;
+      ctx.lineWidth = 8;
+      ctx.stroke();
+
+      // Bright core
+      buildPath();
+      const core = ctx.createLinearGradient(tail.x, tail.y, head.x, head.y);
+      core.addColorStop(0, 'rgba(255,210,235,0)');
+      core.addColorStop(1, 'rgba(255,210,235,1)');
+      ctx.strokeStyle = core;
+      ctx.lineWidth = 1.5;
       ctx.stroke();
     }
 
