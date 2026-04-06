@@ -570,6 +570,24 @@ html, body {
   flex-wrap: wrap;
   gap: 8px;
 }
+
+.project-skills-row {
+  margin-top: 10px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px 16px;
+}
+.project-skills-row .skills-container {
+  margin-top: 0;
+}
+.project-skills-row .project-see-more {
+  margin-top: 0;
+  flex-shrink: 0;
+  align-self: center;
+}
+
 .skill-tag {
   display: inline-block;
   padding: 6px 10px;
@@ -579,6 +597,112 @@ html, body {
   color: #111827;
   font-size: 12px;
   font-weight: 400;
+}
+
+.project-see-more {
+  margin-top: 12px;
+  padding: 6px 14px;
+  font-size: 13px;
+  font-family: inherit;
+  font-weight: 500;
+  color: #0f172a;
+  background: #fff;
+  border: 1px solid rgba(0,0,0,0.18);
+  border-radius: 999px;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease, box-shadow 0.15s ease;
+}
+.project-see-more:hover {
+  background: #f8fafc;
+  border-color: rgba(0,0,0,0.28);
+  box-shadow: 0 2px 8px rgba(15, 23, 42, 0.06);
+}
+.project-see-more:focus-visible {
+  outline: 2px solid var(--section-accent, #4ade80);
+  outline-offset: 2px;
+}
+
+/* Modal: partial-screen panel over a light dim (not full blackout) */
+.site-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 10000;
+  display: grid;
+  place-items: center;
+  padding: max(24px, min(6vh, 48px)) max(16px, 4vw);
+  box-sizing: border-box;
+}
+.site-modal[hidden] {
+  display: none;
+}
+.site-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(15, 23, 42, 0.38);
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 280ms ease;
+}
+.site-modal__dialog {
+  position: relative;
+  z-index: 1;
+  width: min(96vw, 1180px);
+  height: min(84vh, 760px);
+  max-height: calc(100dvh - 48px);
+  border-radius: 16px;
+  overflow: hidden;
+  background: transparent;
+  box-shadow: 0 24px 80px rgba(15, 23, 42, 0.22);
+  border: none;
+  display: flex;
+  flex-direction: column;
+  opacity: 0;
+  transform: translateY(14px) scale(0.985);
+  transition: opacity 280ms ease, transform 320ms cubic-bezier(0.2, 0.7, 0.2, 1);
+}
+.site-modal.is-open .site-modal__backdrop {
+  opacity: 1;
+}
+.site-modal.is-open .site-modal__dialog {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+.site-modal__close {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  z-index: 2;
+  width: 40px;
+  height: 40px;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  place-items: center;
+  border: none;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.96);
+  color: #0f172a;
+  font-size: 26px;
+  line-height: 1;
+  font-weight: 300;
+  cursor: pointer;
+  box-shadow: 0 2px 14px rgba(15, 23, 42, 0.12);
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+.site-modal__close:hover {
+  background: #fff;
+  transform: scale(1.04);
+}
+.site-modal__close:focus-visible {
+  outline: 2px solid var(--active, #e879f9);
+  outline-offset: 2px;
+}
+.site-modal__frame {
+  flex: 1;
+  width: 100%;
+  min-height: 0;
+  border: 0;
+  background: #fafafa;
 }
 
 /* Travel project: side-by-side text and image within current width */

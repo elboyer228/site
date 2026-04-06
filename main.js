@@ -233,5 +233,76 @@
   }
 })();
 
+// ── Travelise detail modal (iframe) ───────────────────────────
+(function () {
+  const modal = document.getElementById('travelise-modal');
+  if (!modal) return;
+
+  const frame = modal.querySelector('.site-modal__frame');
+  const dialog = modal.querySelector('.site-modal__dialog');
+  const TRAVELISE_SRC = './travelise.html';
+  let lastFocus = null;
+  let closing = false;
+
+  function isOpen() {
+    return !modal.hasAttribute('hidden');
+  }
+
+  function openModal() {
+    if (isOpen()) return;
+    closing = false;
+    lastFocus = document.activeElement;
+    modal.classList.remove('is-closing');
+    modal.removeAttribute('hidden');
+    modal.setAttribute('aria-hidden', 'false');
+    if (frame && !frame.getAttribute('src')) frame.setAttribute('src', TRAVELISE_SRC);
+    document.documentElement.style.overflow = 'hidden';
+    requestAnimationFrame(() => modal.classList.add('is-open'));
+    modal.querySelector('.site-modal__close')?.focus();
+  }
+
+  function closeModal() {
+    if (!isOpen() || closing) return;
+    closing = true;
+    modal.classList.remove('is-open');
+    modal.classList.add('is-closing');
+
+    const finishClose = () => {
+      modal.setAttribute('hidden', '');
+      modal.setAttribute('aria-hidden', 'true');
+      modal.classList.remove('is-closing');
+      document.documentElement.style.overflow = '';
+      lastFocus?.focus?.();
+      lastFocus = null;
+      closing = false;
+    };
+
+    if (!dialog) {
+      finishClose();
+      return;
+    }
+
+    dialog.addEventListener('transitionend', finishClose, { once: true });
+  }
+
+  document.querySelectorAll('[data-travelise-modal-open]').forEach((btn) => {
+    btn.addEventListener('click', (e) => {
+      e.preventDefault();
+      openModal();
+    });
+  });
+
+  modal.querySelectorAll('[data-travelise-modal-close]').forEach((el) => {
+    el.addEventListener('click', (e) => {
+      e.preventDefault();
+      closeModal();
+    });
+  });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && isOpen()) closeModal();
+  });
+})();
+
 
 

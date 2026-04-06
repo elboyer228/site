@@ -149,8 +149,13 @@
                     <p class="project-description">
                       Developed UX research pipelines including context scenarios, personas, and adaptive prototypes to evaluate AI‑driven personalization. Aimed to design a travel assistant that supports user wellbeing through contextual recommendations and balanced activity planning.
                     </p>
-                    <div class="skills-container">
-                      <span class="skill-tag">UI/UX</span>
+                    <div class="project-skills-row">
+                      <div class="skills-container">
+                        <span class="skill-tag">UI/UX</span>
+                      </div>
+                      <button type="button" class="project-see-more" data-travelise-modal-open aria-haspopup="dialog">
+                        See more
+                      </button>
                     </div>
                   </div>
                 </div>
@@ -510,6 +515,26 @@
       <p class="footer-copy">© 2026 Élise Boyer · All rights reserved</p>
       <p class="footer-note">Designed & built by Élise Boyer</p>
     </footer>
+
+    <div
+      id="travelise-modal"
+      class="site-modal"
+      hidden
+      aria-hidden="true"
+    >
+      <div class="site-modal__backdrop" data-travelise-modal-close tabindex="-1"></div>
+      <div
+        class="site-modal__dialog"
+        role="dialog"
+        aria-modal="true"
+        aria-label="Well-being aware AI agent for travel — extended details"
+      >
+        <button type="button" class="site-modal__close" data-travelise-modal-close aria-label="Close">
+          ×
+        </button>
+        <iframe class="site-modal__frame" title="Travelise project details" loading="lazy"></iframe>
+      </div>
+    </div>
 
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>

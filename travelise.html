@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Travelise — Case study</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
+    <style>
+      :root {
+        --bg: #000000;
+        --text: #f8fafc;
+        --muted: #cbd5e1;
+        --card: transparent;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        margin: 0;
+        padding: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Lato", system-ui, -apple-system, sans-serif;
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+      }
+
+      html::-webkit-scrollbar,
+      body::-webkit-scrollbar {
+        width: 0;
+        height: 0;
+        display: none;
+      }
+
+      body {
+        padding: clamp(16px, 3vw, 28px);
+      }
+
+      .travelise-cover {
+        max-width: 980px;
+        margin: 0 auto clamp(36px, 7vh, 84px);
+        min-height: min(92vh, 920px);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: space-between;
+        text-align: center;
+      }
+
+      .travelise-cover__title {
+        margin: 0;
+        padding-top: clamp(6px, 2vh, 18px);
+        width: 100%;
+        max-width: 100%;
+        text-align: center;
+        font-size: clamp(34px, 7vw, 92px);
+        letter-spacing: 0.18em;
+        /* Offsets letter-spacing so the word reads visually centered */
+        padding-inline-start: 0.18em;
+        font-weight: 700;
+        text-transform: uppercase;
+      }
+
+      .travelise-cover__image {
+        width: min(92vw, 760px);
+        height: auto;
+        object-fit: contain;
+      }
+
+      .travelise-story {
+        max-width: 980px;
+        margin: 0 auto;
+        display: grid;
+        grid-template-columns: minmax(280px, 46%) minmax(280px, 46%);
+        align-items: start;
+        justify-content: center;
+        gap: clamp(10px, 2vw, 20px);
+      }
+
+      .visual-column {
+        position: sticky;
+        top: clamp(12px, 3vh, 28px);
+        align-self: start;
+        height: calc(100dvh - clamp(24px, 6vh, 56px));
+        min-height: 520px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+      }
+
+      .phone-stack {
+        position: relative;
+        width: min(100%, 410px);
+        height: min(86dvh, 760px);
+      }
+
+      .phone-shot {
+        position: absolute;
+        inset: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        object-position: center left;
+        opacity: 0;
+        transform: translateY(12px) scale(0.995);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+        filter: drop-shadow(0 16px 34px rgba(15, 23, 42, 0.18));
+        pointer-events: none;
+      }
+
+      .phone-shot.active {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+      }
+
+      .content-column {
+        display: grid;
+        gap: 18vh;
+        padding-bottom: 16vh;
+        justify-self: start;
+        max-width: 620px;
+      }
+
+      .story-step {
+        min-height: 72vh;
+        border: 0;
+        border-radius: 0;
+        background: var(--card);
+        padding: clamp(18px, 2.3vw, 28px);
+        display: grid;
+        align-content: center;
+        transition: opacity 0.25s ease;
+      }
+
+      .story-step.active {
+        box-shadow: none;
+      }
+
+      .story-step h2 {
+        margin: 0 0 10px;
+        font-size: clamp(24px, 3.1vw, 34px);
+        line-height: 1.2;
+        font-weight: 700;
+      }
+
+      .story-step p {
+        margin: 0;
+        color: var(--muted);
+        font-size: clamp(15px, 1.4vw, 19px);
+        line-height: 1.45;
+        text-align: justify;
+      }
+
+      @media (max-width: 900px) {
+        .travelise-cover {
+          min-height: min(86vh, 760px);
+        }
+
+        .travelise-cover__title {
+          letter-spacing: 0.12em;
+          padding-inline-start: 0.12em;
+        }
+
+        .travelise-story {
+          grid-template-columns: 1fr;
+        }
+
+        .visual-column {
+          position: relative;
+          top: auto;
+          height: auto;
+          min-height: 0;
+          margin-bottom: 10px;
+        }
+
+        .phone-stack {
+          height: min(84vh, 680px);
+        }
+
+        .content-column {
+          gap: 14vh;
+          padding-bottom: 8vh;
+        }
+
+        .story-step {
+          min-height: 56vh;
+        }
+
+      }
+    </style>
+  </head>
+  <body>
+    <section class="travelise-cover" aria-label="Travelise cover">
+      <h1 class="travelise-cover__title">Travelise</h1>
+      <img class="travelise-cover__image" src="./images/travelise.png" alt="Travelise cover illustration" />
+    </section>
+
+    <main class="travelise-story">
+      <section class="visual-column" aria-label="Travelise app screens">
+        <div class="phone-stack">
+          <img class="phone-shot active" data-shot="0" src="./traveliseimages/intro1.png" alt="Travelise onboarding step one" />
+          <img class="phone-shot" data-shot="1" src="./traveliseimages/intro2.png" alt="Travelise onboarding step two" />
+          <img class="phone-shot" data-shot="2" src="./traveliseimages/intro3.png" alt="Travelise onboarding step three" />
+          <img class="phone-shot" data-shot="3" src="./traveliseimages/interestmenu.png" alt="Travelise interest selection screen" />
+          <img class="phone-shot" data-shot="4" src="./traveliseimages/home.png" alt="Travelise personalized home feed" />
+          <img class="phone-shot" data-shot="5" src="./traveliseimages/homereco1.png" alt="Travelise recommendation detail for Superkilen Park" />
+          <img class="phone-shot" data-shot="6" src="./traveliseimages/reschedule.png" alt="Travelise reschedule and replace actions" />
+          <img class="phone-shot" data-shot="7" src="./traveliseimages/homereco2.png" alt="Travelise recommendation detail for Papiroen Architecture Walk" />
+          <img class="phone-shot" data-shot="8" src="./traveliseimages/homereco3.png" alt="Travelise recommendation detail for Ceramics Workshop" />
+          <video
+            class="phone-shot"
+            data-shot="9"
+            muted
+            loop
+            playsinline
+            preload="auto"
+            poster="./traveliseimages/swipe1.png"
+            aria-label="Travelise swipe demo"
+          >
+            <source src="./traveliseimages/swipedemo.mp4" type="video/mp4" />
+            <source src="./traveliseimages/swipedemo.mov" type="video/quicktime" />
+          </video>
+          <img class="phone-shot" data-shot="10" src="./traveliseimages/dayschedule1.png" alt="Travelise day schedule overview" />
+          <img class="phone-shot" data-shot="11" src="./traveliseimages/wellnessadd.png" alt="Travelise wellness activity suggestion modal" />
+          <img class="phone-shot" data-shot="12" src="./traveliseimages/dayschedule2withoutlunch.png" alt="Travelise updated day schedule without lunch slot" />
+          <img class="phone-shot" data-shot="13" src="./traveliseimages/dayschedule2withlunch.png" alt="Travelise updated day schedule with lunch slot" />
+          <img class="phone-shot" data-shot="14" src="./traveliseimages/map.png" alt="Travelise map exploration view" />
+        </div>
+      </section>
+
+      <section class="content-column" aria-label="Travelise case study text">
+        <article class="story-step active" data-step="0">
+          <h2>Share the essentials of your trip</h2>
+          <p>
+            Users provide dates, budget, mood, and companions in one simple first step.
+            The onboarding stays light so they can begin quickly without friction.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="1">
+          <h2>Swipe to reveal your perfect trip</h2>
+          <p>
+            As users swipe, the assistant learns taste and continuously adapts recommendations.
+            Each gesture makes the next options more personal.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="2">
+          <h2>Receive a calm, effortless plan</h2>
+          <p>
+            Once preferences are clear, the app proposes a coherent itinerary.
+            The result reduces decision fatigue and supports intentional travel.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="3">
+          <h2>Select interests to shape your day</h2>
+          <p>
+            Users start by choosing topics they care about, from nature and architecture to quiet cafes.
+            This simple setup gives the assistant the right context for highly relevant suggestions.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="4">
+          <h2>Receive a personalized home feed</h2>
+          <p>
+            The home view combines moment-based ideas, nearby places, and curated picks in one flow.
+            It quickly orients the user with suggestions that match mood, timing, and location.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="5">
+          <h2>Open a recommendation in detail</h2>
+          <p>
+            Each card expands into a rich detail page with context, reasons for selection, and practical info.
+            This helps users understand why a place fits them before they commit.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="6">
+          <h2>Adjust the plan with one tap</h2>
+          <p>
+            If a suggestion does not fit, users can reschedule, replace, remove, or favorite it instantly.
+            The plan stays flexible while preserving personalized quality.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="7">
+          <h2>Explore architecture-focused moments</h2>
+          <p>
+            The assistant adapts to preference signals and proposes routes that match design-oriented interests.
+            Suggestions include timing and visual landmarks to support calm exploration.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="8">
+          <h2>Balance discovery with mindful activities</h2>
+          <p>
+            Beyond major spots, Travelise surfaces slower experiences like workshops to keep the day balanced.
+            The final journey feels personal, varied, and easy to follow.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="9">
+          <h2>Main user flow: swipe first</h2>
+          <p>
+            Swiping activities helps users focus on what they actually want to do, instead of spending time on organization details.
+            The AI agent then builds a plan from those preferences and adds similar recommendations automatically.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="10">
+          <h2>Start from a structured day plan</h2>
+          <p>
+            The schedule view groups activities by time and keeps the day readable at a glance.
+            It shows a wellness score based on movement, mindfulness, and the type of activities, then proposes additions to improve that score and get the best out of the day.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="11">
+          <h2>Add wellness moments contextually</h2>
+          <p>
+            The app proposes a short wellness activity when it detects a good time window.
+            Suggestions include impact on the score and a clear reason tied to the user context.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="12">
+          <h2>See an alternative schedule instantly</h2>
+          <p>
+            Users keep free time with no fixed schedule for strolling and personal discovery in the city.
+            If needed, they can quickly add a suitable activity with one click.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="13">
+          <h2>Get adaptive planning during your journey</h2>
+          <p>
+            When users add an activity, it is automatically inserted into the timeline at the best fitting time slot.
+            There is no need for manual rescheduling, which reduces organizational fatigue.
+          </p>
+        </article>
+
+        <article class="story-step" data-step="14">
+          <h2>Navigate ideas spatially on the map</h2>
+          <p>
+            The map view lets users explore recommendations by area and theme.
+            It supports quick location-based decisions when moving through the city.
+          </p>
+        </article>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const steps = Array.from(document.querySelectorAll(".story-step"));
+        const shots = Array.from(document.querySelectorAll(".phone-shot"));
+        if (!steps.length || !shots.length) return;
+
+        function activate(idx) {
+          steps.forEach((step, i) => step.classList.toggle("active", i === idx));
+          shots.forEach((shot, i) => {
+            const on = i === idx;
+            shot.classList.toggle("active", on);
+            if (shot instanceof HTMLVideoElement) {
+              if (on) shot.play().catch(() => {});
+              else {
+                shot.pause();
+                shot.currentTime = 0;
+              }
+            }
+          });
+        }
+
+        const observer = new IntersectionObserver(
+          (entries) => {
+            entries.forEach((entry) => {
+              if (!entry.isIntersecting) return;
+              const idx = Number(entry.target.getAttribute("data-step"));
+              activate(idx);
+            });
+          },
+          {
+            root: null,
+            threshold: 0.45,
+          }
+        );
+
+        steps.forEach((step) => observer.observe(step));
+      })();
+    </script>
+  </body>
+</html>
