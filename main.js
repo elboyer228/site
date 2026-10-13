@@ -112,6 +112,24 @@
   if (typeof gsap === "undefined") return;
   gsap.registerPlugin(ScrollTrigger);
 
+  const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  let lenis = null;
+
+  if (!prefersReducedMotion && typeof Lenis !== "undefined") {
+    lenis = new Lenis({
+      duration: 1.15,
+      smoothWheel: true,
+      wheelMultiplier: 0.85,
+      touchMultiplier: 1.05,
+    });
+    window.lenis = lenis;
+    lenis.on("scroll", ScrollTrigger.update);
+    gsap.ticker.add((time) => {
+      lenis.raf(time * 1000);
+    });
+    gsap.ticker.lagSmoothing(0);
+  }
+
   // ── Nav pill slide down ───────────────────────────────────────
   gsap.from('.sidebar', {
     y: -30, opacity: 0, duration: 0.7, ease: 'power3.out', delay: 0.2
@@ -134,7 +152,13 @@
       e.preventDefault();
       const id = link.getAttribute('href');
       const el = document.querySelector(id);
-      if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (!el) return;
+      if (lenis) {
+        const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+        lenis.scrollTo(el, { offset: -margin, duration: 1.15 });
+      } else {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
     });
   });
 
@@ -257,6 +281,7 @@
     modal.setAttribute('aria-hidden', 'false');
     if (frame && !frame.getAttribute('src')) frame.setAttribute('src', TRAVELISE_SRC);
     document.documentElement.style.overflow = 'hidden';
+    window.lenis?.stop();
     requestAnimationFrame(() => modal.classList.add('is-open'));
     modal.querySelector('.site-modal__close')?.focus();
   }
@@ -272,6 +297,7 @@
       modal.setAttribute('aria-hidden', 'true');
       modal.classList.remove('is-closing');
       document.documentElement.style.overflow = '';
+      window.lenis?.start();
       lastFocus?.focus?.();
       lastFocus = null;
       closing = false;

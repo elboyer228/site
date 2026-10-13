@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 600" role="img" aria-hidden="true">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1a1a16"/>
+      <stop offset="100%" stop-color="#0b0b0a"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#d4b06a"/>
+      <stop offset="100%" stop-color="#8a6a32"/>
+    </linearGradient>
+  </defs>
+  <rect width="800" height="600" fill="url(#bg)"/>
+  <g fill="none" stroke="url(#gold)" stroke-width="1.4" opacity="0.55">
+    <rect x="90" y="80" width="620" height="440" rx="18"/>
+    <path d="M90 220h620M90 380h620M280 80v440M520 80v440"/>
+    <circle cx="400" cy="300" r="86"/>
+    <circle cx="400" cy="300" r="52"/>
+  </g>
+  <g fill="#d4b06a">
+    <circle cx="280" cy="220" r="5"/>
+    <circle cx="520" cy="220" r="5"/>
+    <circle cx="280" cy="380" r="5"/>
+    <circle cx="520" cy="380" r="5"/>
+    <circle cx="400" cy="300" r="8"/>
+  </g>
+  <text x="400" y="535" text-anchor="middle" fill="#e8d7b0" font-family="Georgia, serif" font-size="22" letter-spacing="4">JAEGER-LECOULTRE</text>
+</svg>

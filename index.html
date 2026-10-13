@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&display=swap" rel="stylesheet" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@v2.15.1/devicon.min.css" />
     <link rel="stylesheet" href="https://unpkg.com/aos@2.3.4/dist/aos.css" />
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.1.20/dist/lenis.css" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -37,9 +38,19 @@
             <h2 data-aos="fade-right" data-aos-delay="120">About me</h2>
           </div>
           <div class="section-body section-body--center">
-            <p data-aos="fade-up" data-aos-delay="0">I'm a Master's student in <strong>Data Science</strong> at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: white; text-decoration: none"><strong>Federal Institute of Technology in Lausanne (EPFL)</strong></a>.</p>
+            <p data-aos="fade-up" data-aos-delay="0">I'm a Master's student in <strong>Computer Science</strong>, with a minor in <strong>Data Science</strong>, at the <a href="https://www.epfl.ch/en/" target="_blank" rel="noopener" style="color: white; text-decoration: none"><strong>Federal Institute of Technology in Lausanne (EPFL)</strong></a>.</p>
             <p data-aos="fade-up" data-aos-delay="150">Yes, I <i>genuinely</i> do enjoy <strong>cleaning datasets</strong> and <strong>building data pipelines</strong> to extract data insights that help people make <strong>better decisions</strong>.</p>
-            <p data-aos="fade-up" data-aos-delay="300">I'm looking for a <strong>6-month internship</strong> starting in September 2026 at a company that values creativity and innovation, where I can grow both <i>professionally</i> and <i>personally</i>.</p>
+            <p data-aos="fade-up" data-aos-delay="300">I'm looking for a <strong>6-month Master's thesis</strong> starting in September 2026 — a place where I can work intensively, full-time, and go deep on one problem from the data through to something a team can actually use.</p>
+            <aside class="about-now" data-aos="fade-up" data-aos-delay="420">
+              <span class="about-now-kicker">Currently</span>
+              <p class="about-now-role">Data Engineer Intern at <strong>Jaeger-LeCoultre</strong></p>
+              <ul class="about-tags" aria-label="Tools I work with">
+                <li class="skill-tag">BigQuery</li>
+                <li class="skill-tag">dbt</li>
+                <li class="skill-tag">Looker</li>
+                <li class="skill-tag">GitLab CI/CD</li>
+              </ul>
+            </aside>
           </div>
         </section>
 
@@ -110,8 +121,32 @@
                 <button class="filter-btn" data-filter="data-eng" role="tab">Data Engineering</button>
               </div>
 
-              <div class="project-item" data-cats="data-eng analytics architecture">
+              <div class="project-item" data-cats="data-eng">
                 <div class="project-number">01</div>
+                <div class="project-content">
+                  <a class="project-cover" href="#" aria-label="Data Engineer Intern at Jaeger-LeCoultre">
+                    <img src="./images/jaeger-lecoultre.svg" alt="Jaeger-LeCoultre cover" />
+                  </a>
+                  <h2 class="project-title">
+                    Data Engineer Intern at Jaeger-LeCoultre
+                    <span class="project-year">- Present</span>
+                  </h2>
+                  <p class="project-description"><i>Jaeger-LeCoultre</i>, Le Sentier, Switzerland</p>
+                  <p class="project-description">
+                    Building and maintaining data pipelines and analytics models to turn operational data into reliable insights for the business.
+                  </p>
+                  <div class="skills-container">
+                    <span class="skill-tag">BigQuery</span>
+                    <span class="skill-tag">dbt</span>
+                    <span class="skill-tag">Looker</span>
+                    <span class="skill-tag">GitLab CI/CD</span>
+                    <span class="skill-tag">Data Engineering</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="project-item" data-cats="data-eng analytics architecture">
+                <div class="project-number">02</div>
                 <div class="project-content">
                   <a class="project-cover" href="#" aria-label="SQL Data Warehouse image">
                     <img src="./images/sql-warehouse.webp" alt="SQL Data Warehouse cover" />
@@ -394,7 +429,8 @@
             <div class="edu-grid">
               <article class="edu-card" data-aos="flip-up" data-aos-delay="0">
                 <h3 class="edu-degree">Master's Degree</h3>
-                <div class="edu-field">Data Science</div>
+                <div class="edu-field">Computer Science</div>
+                <div class="edu-minor">Minor in Data Science</div>
                 <div class="edu-school">Federal Institute of Technology in Lausanne (EPFL)</div>
                 <div class="edu-years">2025 - Present</div>
               </article>
@@ -551,6 +587,7 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+    <script src="https://unpkg.com/lenis@1.1.20/dist/lenis.min.js"></script>
     <script src="./main.js"></script>
   </body>
 </html>
